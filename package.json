@@ -1,0 +1,16 @@
+{
+  "name": "projectboilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup --config --name %npm_package_outputname%"
+  },
+  "outputname": "Switcheroo",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.5"
+  }
+}
