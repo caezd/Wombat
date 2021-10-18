@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup --config --name %npm_package_outputname%"
+    "build": "rollup --config --name %npm_package_outputname%",
+    "serve": "http-server ./dist/"
   },
   "outputname": "Switcheroo",
   "author": "",
