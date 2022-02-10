@@ -1,7 +1,7 @@
 export default {
     input: 'src/main.js',
     output: {
-        file: 'dist/switcheroo.js',
+        file: 'dist/wombat.js',
         format: 'iife',
         globals: {
             jquery: '$'

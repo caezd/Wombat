@@ -1,13 +1,13 @@
 {
-  "name": "projectboilerplate",
+  "name": "wombat",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "rollup --config --name %npm_package_outputname%",
-    "serve": "http-server ./dist/"
+    "serve": "http-server ./dist/ -c-1"
   },
-  "outputname": "App",
+  "outputname": "Wombat",
   "author": "",
   "license": "ISC",
   "devDependencies": {
