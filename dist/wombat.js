@@ -17,6 +17,8 @@ var Wombat = (function () {
               var doc = parser.parseFromString(html, 'text/html');
 
               var wombatContainer = doc.querySelector(selector);
+              console.log(url, selector, doc);
+
 
               if (wombatContainer === null) throw new Error(errorText);
 
@@ -37,17 +39,9 @@ var Wombat = (function () {
       return 'transitionend';
   }
 
-  function user_id() {
-   return parseInt(((my_getcookie('fa_'+location.host.replace(/\./g,'_')+'_data')||'').match(/"userid";(?:s:[0-9]+:"|i:)([0-9]+)/)||[0,-1])[1]);
-  }
-
-  function isGuest() {
-      return user_id() == -1;
-  }
 
   const DEFAULT_OPT = {
       excludes: [],
-      allowGuests: false,
       selector: '#wombat',
       displayOnLoad: '',
       overlay: true,
@@ -112,6 +106,7 @@ var Wombat = (function () {
 
 
               this.load(user_id).then(() => this.open());
+              return false;
           });
       });
   };
@@ -179,9 +174,6 @@ var Wombat = (function () {
 
       this.options = Object.assign({}, DEFAULT_OPT, options);
 
-      if(!this.options.allowGuests) {
-          if(isGuest()) return;
-      }
 
       this.transitionEnd = transitionSelect();
       this.onClick();
