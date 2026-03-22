@@ -1,11 +1,13 @@
 import terser from "@rollup/plugin-terser";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
 
 export default {
   input: "src/wombat.js",
   output: {
-    file: "wombat.min.js",
+    file: "dist/wombat.min.js",
     format: "iife",
-    name: "version",
-    plugins: [terser()],
+    name: "Wombat",
   },
+  plugins: [resolve(), commonjs(), terser()],
 };
