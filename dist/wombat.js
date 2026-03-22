@@ -16,7 +16,6 @@ var Wombat = (function () {
         var doc = parser.parseFromString(html, "text/html");
 
         var wombatContainer = doc.querySelector(selector);
-        console.log(url, selector, doc);
 
         if (wombatContainer === null) throw new Error(errorText);
 
@@ -69,6 +68,14 @@ var Wombat = (function () {
     }
 
     document.body.appendChild(docFrag);
+
+    if (this.pendingDataset) {
+      Object.entries(this.pendingDataset).forEach(([key, value]) => {
+        this.aside.dataset[key] = value;
+      });
+      this.pendingDataset = null;
+    }
+
     if (typeof this.options.afterLoad === "function") {
       this.options.afterLoad(this.aside, this.overlay);
     }
@@ -187,6 +194,9 @@ var Wombat = (function () {
       if (this.options.displayOnLoad && !isVisible(wombat)) {
         wombat.style.display = this.options.displayOnLoad;
       }
+
+      // Capture le dataset de l'élément fetché avant de le déplacer dans le fragment
+      this.pendingDataset = { ...wombat.dataset };
 
       var doc = document.createDocumentFragment();
       doc.appendChild(wombat);
